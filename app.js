@@ -24,13 +24,13 @@ app.use(express.json());
 
 app.use("/api/videos", videoRouter);
 
-let currDateTime = "2024-01-23T17:50:25Z";
+let currDateTime = "2024-01-22T17:50:25Z";
 
 const getNewVideos = async (intervalInSeconds) => {
   setInterval(async () => {
     try {
       const videos = await searchForNewVideos(currDateTime);
-      await axios.post("http://localhost:3000/api/videos/save", {
+      const response = await axios.post("http://localhost:3000/api/videos/save", {
         videos,
       });
     } catch (error) {
