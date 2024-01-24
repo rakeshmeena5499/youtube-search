@@ -3,17 +3,20 @@ const videosRouter = express.Router();
 const videoModel = require("../models/videoModel");
 
 videosRouter.get("/", async (req, res) => {
-  console.log("Fetching videos...");
+  try {
+    const pageNumber = Number(req.query.page) || 1;
+    const itemsPerPage = Number(req.query.limit) || 10;
 
-  const pageNumber = Number(req.query.page);
-  const itemsPerPage = Number(req.query.limit);
+    const videos = await videoModel.find({})
+      .sort({ publishedAt: 'desc' })
+      .skip((pageNumber - 1) * itemsPerPage)
+      .limit(itemsPerPage);
 
-  const videos = await videoModel.find({})
-    .sort({ publishedAt: "desc" })
-    .skip(pageNumber)
-    .limit(itemsPerPage);
-
-  res.status(200).json({ videos });
+    res.render('dashboard', { videos });
+  } catch (error) {
+    console.error('Error fetching videos:', error.message);
+    res.status(500).send('Internal Server Error');
+  }
 });
 
 videosRouter.get("/search", async (req, res) => {
@@ -21,14 +24,14 @@ videosRouter.get("/search", async (req, res) => {
 
   const query = req.query.q;
 
-  const videos = await videoModel.find({});
-  const filteredVideos = videos.filter((video) => {
+  const allVideos = await videoModel.find({});
+  const videos = allVideos.filter((video) => {
     if (video.title.includes(query) || video.description.includes(query)) {
       return video;
     }
   });
 
-  res.status(200).json(filteredVideos);
+  res.render('dashboard', { videos });
 });
 
 videosRouter.post("/save", async (req, res) => {

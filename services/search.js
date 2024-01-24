@@ -6,7 +6,7 @@ const searchForNewVideos = async (publishedAfter) => {
     const response = await google.youtube("v3").search.list({
       key: YOUTUBE_API_KEY,
       part: "snippet",
-      q: "Investing",
+      q: "Chess",
       publishedAfter: publishedAfter,
       maxResults: 2,
     });
