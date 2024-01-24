@@ -38,6 +38,9 @@ const getNewVideos = async (intervalInSeconds) => {
       const response = await axios.post("http://localhost:3000/api/videos/save", {
         videos,
       });
+      // console.log("Before: ", currDateTime);
+      currDateTime = response.data['latestDate'];
+      // console.log("After: ", currDateTime);
     } catch (error) {
       console.error("Error loading new videos:", error.message);
     }
