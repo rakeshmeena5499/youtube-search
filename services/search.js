@@ -6,15 +6,15 @@ const searchForNewVideos = async (publishedAfter) => {
     const response = await google.youtube("v3").search.list({
       key: YOUTUBE_API_KEY,
       part: "snippet",
-      q: "Chess",
+      q: "MSD",
       publishedAfter: publishedAfter,
-      maxResults: 2,
+      maxResults: 10,
     });
 
     console.log("Search successful...");
     const { data } = response;
     const videoDetails = data.items.map((item) => item.snippet);
-    // console.log("Videos Details: ", videoDetails);
+// console.log("Videos Details: ", videoDetails);
 
     return videoDetails;
   } catch (err) {

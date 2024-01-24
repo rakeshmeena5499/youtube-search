@@ -29,7 +29,7 @@ app.use(express.json());
 app.use("/api/videos", videoRouter);
 
 
-let currDateTime = "2024-01-22T17:50:25Z";
+let currDateTime = "1999-04-05T00:00:00Z";
 
 const getNewVideos = async (intervalInSeconds) => {
   setInterval(async () => {
@@ -44,7 +44,7 @@ const getNewVideos = async (intervalInSeconds) => {
   }, intervalInSeconds * 1000);
 };
 
-getNewVideos(10);
+ getNewVideos(10);
 
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
