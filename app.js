@@ -15,7 +15,7 @@ mongoose.connection.on("error", (err) => {
 });
 
 mongoose.connection.once("open", () => {
-  console.log(`Connected to MongoDB on port ${PORT}`);
+  console.log(`Connected to MongoDB on port 27017`);
 });
 
 app.use(cors());
