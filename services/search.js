@@ -14,7 +14,7 @@ const searchForNewVideos = async (publishedAfter) => {
     console.log("Search successful...");
     const { data } = response;
     const videoDetails = data.items.map((item) => item.snippet);
-    console.log("Videos Details: ", videoDetails);
+    // console.log("Videos Details: ", videoDetails);
 
     return videoDetails;
   } catch (err) {
