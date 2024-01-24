@@ -97,7 +97,7 @@ Make sure you've docker installed on your system beforehand.
 
 ```bash
   docker build -t fampay .
-  docker run -it -d -p 8000:80 fampay
+  docker run -it -d -p 3000:3000 fampay
   docker exec -it <-put container ID here-> /bin/sh
  ```
 
