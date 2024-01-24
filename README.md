@@ -1,6 +1,6 @@
 # youtube-search
 
-Solution for the FamPay Backend Assignment
+FamPay Backend Assignment
 
 ## API Reference
 
@@ -12,8 +12,8 @@ Solution for the FamPay Backend Assignment
 
 #### Get videos
 
-```http
-  GET /api/videos?page=2&limit=4
+```bash
+  GET /api/videos?page=1&limit=5
 ```
 
 |  Query  | Description                 |
@@ -23,7 +23,7 @@ Solution for the FamPay Backend Assignment
 
 #### Search by title or description
 
-```http
+```bash
   GET /api/videos/search?q=Investing
 ```
 
@@ -33,11 +33,11 @@ Solution for the FamPay Backend Assignment
 
 ---
 
-### API for Internal Working
+### API for Polling Videos
 
 ---
 
-```http
+```bash
   POST /api/videos/save
 ```
 
@@ -51,14 +51,6 @@ videos : [
 }
 
 ## Installation
-
-Run this project using node, follow these guidelines:
-
-```bash
-  git clone https://github.com/rakeshmeena5499/youtube-search.git
-  cd youtube-search
-  npm install
-```
 
 ### Environment Variables
 
@@ -84,3 +76,29 @@ Or run using
 ```
 
 ---
+
+### Local Build 
+
+Follow these steps to run this project locally:
+
+```bash
+  git clone https://github.com/rakeshmeena5499/youtube-search.git
+  cd youtube-search
+  npm install
+```
+
+---
+
+### Docker Instructions
+
+Follow these steps to run the application in a docker container:
+
+Make sure you've docker installed on your system beforehand.
+
+```bash
+  docker build -t fampay .
+  docker run -it -d -p 8000:80 fampay
+  docker exec -it <-put container ID here-> /bin/sh
+ ```
+
+ ---
