@@ -24,7 +24,7 @@ Solution for the FamPay Backend Assignment
 #### Search by title or description
 
 ```http
-  GET /api/videos/searcg?q=vlog
+  GET /api/videos/searcg?q=Investing
 ```
 
 | Query | Description                                        |
@@ -33,14 +33,12 @@ Solution for the FamPay Backend Assignment
 
 ---
 
----
-
 ### API for Internal Working
 
 ---
 
 ```http
-  POST /api/videos/all
+  POST /api/videos/save
 ```
 
 Example Body :
